@@ -1,2 +1,3 @@
-# solid
-In-class exercises for Math 4370 on applying SOLID principles
+# SOLID
+
+The files included here all illustrate violations of SOLID principles. Fork this repository and edit the files to better follow those principles.
