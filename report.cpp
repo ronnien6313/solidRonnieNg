@@ -1,5 +1,5 @@
-#include <fstream>
-#include <string>
+#include <iostream>
+#include <sstream>
 
 class Report {
 public:
@@ -8,13 +8,23 @@ public:
 
     Report(const std::string& t, const std::string& d) : title(t), data(d) {}
 
-    std::string formatHtml() {
-        return "<h1>" + title + "</h1>\n<p>" + data + "</p>";
+    int processData() {
+        std::istringstream iss(data);
+        int number, sum = 0;
+        while (iss >> number) {
+            sum += number;
+        }
+        return sum;
     }
 
-    void saveToFile(const std::string& filename) {
-        std::ofstream out(filename);
-        out << formatHtml();
-        out.close();
+    std::string format() {
+        return "<h1>" + title + "</h1>\n<p>" + title + ": " + std::to_string(processData()) + "</p>";
     }
+
 };
+
+// Included for demonstration
+int main() {
+    Report report("Total sales", "51 42 39 60");
+    std::cout << report.format();
+}
