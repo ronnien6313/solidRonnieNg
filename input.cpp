@@ -1,17 +1,23 @@
 #include <iostream>
 
-class Keyboard {
+class Keyboard : public InputDevice {
 public:
     std::string getInput() {
         return "User input from keyboard";
     }
 };
 
-class Mouse {
+class Mouse : public InputDevice {
 public:
     std::string getInput() {
         return "User input from mouse";
     }
+};
+
+class InputDevice {
+    public:
+        virtual std::string getInput() = 0;
+        virtual ~InputDevice() = default;
 };
 
 // Right now this code assumes that input will come from the keyboard, 
@@ -22,9 +28,7 @@ public:
 class InputProcessor {
 public:
     void processInput() {
-        Keyboard keyboard;
-        std::string input = keyboard.getInput();
-        std::cout << "Processing: " << input;
+        std::unique_ptr<InputDevice> device;
     }
 };
 
