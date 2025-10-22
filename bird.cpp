@@ -17,3 +17,17 @@ public:
         throw std::runtime_error("Ostriches can't fly!");
     }
 };
+
+class Eagle: public Bird {};
+
+// For demonstration
+int main() {
+    Eagle eagle;
+    Ostrich ostrich;
+    
+    eagle.lay_egg();
+    eagle.fly();
+
+    ostrich.lay_egg();
+    ostrich.fly();
+}
